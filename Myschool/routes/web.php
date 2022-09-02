@@ -16,11 +16,16 @@ use App\Http\Controllers\ClasseController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// route pour la page d'authentification
 Route::get('/',[EleveController::class,'authentification']);
-Route::get('/eleve',[EleveController::class,'index'])->name('dashboard');
 // route pour le dashoard d'acceuil
+Route::get('/eleve',[EleveController::class,'index'])->name('dashboard');
+// route de l'inscription
 Route::get('eleve/create',[EleveController::class,'create'])->name('createEleve');
-// Route::post('eleve/create',[EleveController::class,'store'])->name('storeEleve');
+// afficher tout les élèves
 Route::get('/create/list',[EleveController::class,'getAll'])->name('readEleve');
-Route::get('list/classes',[ClasseController::class,'index'])->name('classes');
+// route pour les eleves par classe
+Route::get('list/classes',[ClasseController::class,'getByClass'])->name('listByClass');
+// pour afficher les classes et scolarité
+Route::get('/classes/scolarite',[ClasseController::class,'index'])->name('classes');
+

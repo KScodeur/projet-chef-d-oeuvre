@@ -45,7 +45,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link active" >
+                    <a href="{{route('listByClass')}}" class="nav-link active" >
                       {{-- <span class="me-2"><i class="bi bi-layout-split"></i></span> --}}
                       <span>Liste par classe</span>
                     </a>
@@ -58,10 +58,10 @@
               <hr class="dropdown-divider" />
             {{-- les classes --}}
             <li class="ms-2">
-              <a href="#" class="nav-link px-1 active">
+              <a href="{{route('classes')}}" class="nav-link px-1 active">
                 {{-- <span> <i class="bi bi-speedometer2"></i></span> --}}
                 <span class="me-2 "><img src="/images/classe.png" alt=""></span>
-                <span>Classe</span>
+                <span>Scolarité</span>
               </a>
             </li>
             {{-- fin des classes --}}

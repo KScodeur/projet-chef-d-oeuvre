@@ -19,13 +19,13 @@
  
             <!-- faire les recherche -->
             <form class="d-flex ms-auto" role="search" >
-             <div class="input-group ">
-           <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-           <button class="btn btn-primary " type="button" id="button-addon2">
-               <i class="bi bi-search"></i>
-            </button>
-         </div>
-       </form>
+              <div class="input-group ">
+                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-primary " type="button" id="button-addon2">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </form>
             <!--  -->
             <!-- profil utilisateur -->
              <ul class="navbar-nav mb-2 mb-lg-0">
