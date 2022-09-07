@@ -22,10 +22,16 @@ Route::get('/',[EleveController::class,'authentification']);
 Route::get('/eleve',[EleveController::class,'index'])->name('dashboard');
 // route de l'inscription
 Route::get('eleve/create',[EleveController::class,'create'])->name('createEleve');
+// enregistrer
+Route::post('eleve/create',[EleveController::class,'store'])->name('storeEleve');
 // afficher tout les élèves
 Route::get('/create/list',[EleveController::class,'getAll'])->name('readEleve');
 // route pour les eleves par classe
 Route::get('list/classes',[ClasseController::class,'getByClass'])->name('listByClass');
 // pour afficher les classes et scolarité
 Route::get('/classes/scolarite',[ClasseController::class,'index'])->name('classes');
-
+// pour le bouton editer
+Route::get('/edit/{id}',[EleveController::class,'edit']);
+// l'action du boutton editer
+Route::put('update-data/{id}',[EleveController::class,'update']);
+Route::get('delete/{id}',[EleveController::class,'delete']);

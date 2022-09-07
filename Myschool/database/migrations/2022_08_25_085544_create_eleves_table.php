@@ -21,6 +21,7 @@ class CreateElevesTable extends Migration
             $table->string('prenom');
             $table->enum('sexe',['f','m']);
             $table->date('date-naissance');
+            $table->string('lieu_naissance');
             $table->string('nationalité');
             $table->string('nom-pere');
             $table->string('pere-profession');

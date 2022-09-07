@@ -14,62 +14,45 @@
             <!-- cadres de couleur bleu(primary) -->
             <div class="col-md-3 mb-3">
               <div class="card text-white bg-primary h-100" >
-                <div class="card-header">Header</div>
+                <div class="card-header" >le nombre total d'élèves</div>
                 <div class="card-body">
-                  <h5 class="card-title">total élèves{{$total}}</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h1 class="card-title me-2">{{$total}}</h1>
                 </div>
               </div>
             </div>
             <!-- cadres de couleur bleu(primary) -->
             <div class="col-md-3 mb-3">
               <div class="card text-white bg-warning h-100">
-                <div class="card-header">Header</div>
+                <div class="card-header">Garçons</div>
                 <div class="card-body">
-                  <h5 class="card-title">Primary card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h1 class="card-title align-end">{{$garcons}}</h1>
                 </div>
               </div>
             </div>
             <div class="col-md-3 mb-3">
               <div class="card text-white bg-success h-100">
-                <div class="card-header">Header</div>
+                <div class="card-header">Filles</div>
                 <div class="card-body">
-                  <h5 class="card-title">Primary card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h1 class="card-title">{{$filles}}</h1>
                 </div>
               </div>
             </div>
             <div class="col-md-3 mb-3">
               <div class="card text-white bg-danger h-100">
-                <div class="card-header">Header</div>
+                <div class="card-header">Classes</div>
                 <div class="card-body">
-                  <h5 class="card-title">Primary card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h1 class="card-title">{{$nbClasses}}</h1>
                 </div>
               </div>
             </div>
           </div>
-          <!-- fin des cadres de couleurs  -->
-          {{-- <!-- debut du chart    -->
-          <div class="row">
-            <div class="col-md-6">
-              <div class="card">
-                <div class="card-header">Charts</div>
-                <div class="card-body">
-                  <canvas class="chart" width="400" height="200"></canvas>
-                </div>
-              </div>  
-            </div>
-          </div> --}}
 
   <div class="d-flex col-md-12 fw-bold fs-3 "><span>Le top des dix(10) dernier élèves inscites</span>
   {{-- inscription modal --}}
   <!-- Button trigger modal -->
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-Launch static backdrop modal
+inscription
 </button></div>
 
 
@@ -83,7 +66,16 @@ Launch static backdrop modal
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form  method="POST" action="" class="container-fluid">
+        <div>
+          @if ($errors->any())
+          <ul>
+               @foreach ($errors->all() as $error)
+                   <li class="alert alert-success col-md-12 fw-bold fs-3">{{$error}}</li>
+                @endforeach
+           </ul>
+          @endif
+          </div>
+        <form  method="POST" action="{{route('storeEleve')}}" class="container-fluid">
           <div class="row">
               @if(session()->has("success"))
               <div class="alert alert-success">
@@ -94,24 +86,27 @@ Launch static backdrop modal
           </div>
           @csrf
           <h1>CONNEXION</h1>
-          <div>
+          <div class="form-row">
               <div><label for="">classe</label></div>
               <div>
                   <select name="classe_id">
+                      <option value="">selctionner une classe</option>
                       @foreach ($classes as $classe)
-                          <option value="{{$classe->id}}" name="classe_id">{{$classe->id}}</option>
+                          <option value="{{$classe->id}}" name="classe_id">{{$classe->nom_classe}}</option>
                       @endforeach
                   </select>
               </div>
           </div>
-          <div>
-              <div><label for="">Nom</label></div>
-              <div><input type="text" placeholder="veiller entrer le nom du produit" name="nom"></div>
-          </div> 
-          <div>
-              <div><label for="">Prénom</label> </div>
-              <div><input type="text" placeholder="mettre la description" name="prenom"></div> 
-          </div>
+         <div class="form-row d-flex">
+            <div class="form-group">
+                <label for="">Nom</label>
+                <input type="text" placeholder="veiller entrer le nom du produit" name="nom">
+            </div> 
+            <div class="form-group">
+              <label for="">Prénom</label>
+              <input type="text" placeholder="mettre la description" name="prenom">
+            </div>
+         </div>
           
           <div>
               <div><label for="">sexe</label></div>
@@ -122,11 +117,17 @@ Launch static backdrop modal
                   </select>
               </div>
           </div>
-          <div>
-              <div><label for="">date de naissance</label> </div>
-              <div><input type="date" placeholder="mettre la date de naissance" name="date_naissance"></div> 
-          </div>
-          <div>
+         <div class="form-row d-flex">
+            <div class="form-group">
+              <label for="">date de naissance</label>
+              <input type="date" placeholder="mettre la date de naissance" name="date_naissance">
+            </div>
+            <div class="form-group">
+              <label for="">Lieu de naissance</label>
+              <input type="text" placeholder="mettre la date de naissance" name="lieu_naissance">
+            </div>
+         </div>
+        <div>
               <div><label for="">nationalité</label> </div>
               <div><input type="text" placeholder="la mass du prix" name="nationalite"></div> 
           </div>
@@ -156,28 +157,21 @@ Launch static backdrop modal
               <div><input type="text" placeholder="mettre la date de naissance" name="email"></div> 
           </div>
           
-          {{-- <div> 
-              <div><label for="">Prix</label> </div>
-              <div><input type="text" placeholder="le prix de vente" name="price"></div> 
-          </div>
-          <div>
-              <div class="color"><label for="">Stock</label> </div>
-              <div><input type="text" placeholder="le stock disponible" name="stock"></div> 
-          </div> --}}
-          <div class="container-button2">
+          {{-- <div class="container-button2">
               <div>
                   <button>Annuler</button>
               </div>
               <div>
                   <button type="submit" name="">Envoyer</button>
               </div>
-          </div>
+          </div> --}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="submit" class="btn btn-primary" data-bs-toggle="modal">Enregistrer</button>
+        </div>
       </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
+     
     </div>
   </div>
 </div>

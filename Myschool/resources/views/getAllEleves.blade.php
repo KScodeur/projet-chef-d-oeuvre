@@ -36,8 +36,8 @@
                       <td>{{$eleve->prenom}}</td>
                       <td>{{$eleve->prenom}}</td>
                       <td>
-                        <a href="#" class="btn btn-info">Editer</a>
-                        <a href="#" class="btn btn-danger">Supprimer</a>
+                        <a href="{{url('edit/'.$eleve->id)}}" class="btn btn-info">Editer</a>
+                        <a href="{{url('delete/'.$eleve->id)}}" class="btn btn-danger">Supprimer</a>
                       </td>
                     </tr>   
                   @endforeach
