@@ -10,7 +10,7 @@ class Classe extends Model
 {
     use HasFactory;
 
-    protected $fillable=['nom_classe'];
+    protected $fillable=['nom_classe','scolarite'];
 
     public function eleves(){
         return $this->hasMany(Eleve::class);

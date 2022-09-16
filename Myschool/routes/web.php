@@ -3,6 +3,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EleveController;
 use App\Http\Controllers\ClasseController;
 
@@ -17,9 +18,22 @@ use App\Http\Controllers\ClasseController;
 |
 */
 // route pour la page d'authentification
-Route::get('/',[EleveController::class,'authentification']);
+Route::get('/',[AuthController::class,'login'])->name('login'); 
+// pour la page d'enregistrer un admin
+Route::get('/registration',[AuthController::class,'registration'])->name('authentificate');
+
+Route::get('/register_user',[AuthController::class,'registerUser'])->name('registerUser');
+
+Route::post('/login_user',[AuthController::class,'loginUser'])->name('login_user');
+
+// pour se déconnecter
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+
+
+
+
 // route pour le dashoard d'acceuil
-Route::get('/eleve',[EleveController::class,'index'])->name('dashboard');
+Route::get('/eleve',[AuthController::class,'index'])->name('dashboard');
 // route de l'inscription
 Route::get('eleve/create',[EleveController::class,'create'])->name('createEleve');
 // enregistrer

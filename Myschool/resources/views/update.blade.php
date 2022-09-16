@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="mt-5 pt-3 ">
+{{-- <main class="mt-5 pt-3 ">
            
     <div>
        @if ($errors->any())
@@ -20,7 +20,6 @@
              {{session()->get('success')}}
             </div>
          @endif
-          {{-- <div class="col-md-12 fw-bold fs-3 ">Dashboard</div> --}}
         </div>
         @csrf
         <h1>CONNEXION</h1>
@@ -28,29 +27,7 @@
         <div>
             <div><label for="">classe</label></div>
             <div>
-                <select name="classe_id" >
-                    @foreach ($classes as $classe)
-                        <option value="{{$classe->id}}" name="classe_id">{{$classe->id}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-        <div>
-            <div><label for="">Nom</label></div>
-            <div><input type="text" placeholder="veiller entrer le nom du produit" name="nom" value="{{$eleves->nom}}"></div>
-        </div> 
-        <div>
-            <div><label for="">Prénom</label> </div>
-            <div><input type="text" placeholder="mettre la description" name="prenom" value="{{$eleves->prenom}}"></div> 
-        </div>
-        
-        <div>
-            <div><label for="">sexe</label></div>
-            <div>
-                <select name="" id="" value="{{$eleves->sexe}}">le Sexe
-                    <option value="f">femme</option>
-                    <option value="m">homme</option>
-                </select>
+                <select name="classe_id" ></select>
             </div>
         </div>
         <div>
@@ -90,15 +67,6 @@
             <div><label for="">email</label> </div>
             <div><input type="text" placeholder="mettre la date de naissance" name="email" value="{{$eleves->email}}"></div> 
         </div>
-        
-        {{-- <div> 
-            <div><label for="">Prix</label> </div>
-            <div><input type="text" placeholder="le prix de vente" name="price"></div> 
-        </div>
-        <div>
-            <div class="color"><label for="">Stock</label> </div>
-            <div><input type="text" placeholder="le stock disponible" name="stock"></div> 
-        </div> --}}
         <div class="container-button2">
             <div>
                 <button>Annuler</button>
@@ -108,50 +76,129 @@
             </div>
         </div>
     </form>
-</main>
-@endsection
+</main> --}}
 
-{{-- <form class="row g-3">
-    <div class="col-md-6">
-      <label for="inputEmail4" class="form-label">Email</label>
-      <input type="email" class="form-control" id="inputEmail4">
-    </div>
-    <div class="col-md-6">
-      <label for="inputPassword4" class="form-label">Password</label>
-      <input type="password" class="form-control" id="inputPassword4">
-    </div>
-    <div class="col-12">
-      <label for="inputAddress" class="form-label">Address</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-    </div>
-    <div class="col-12">
-      <label for="inputAddress2" class="form-label">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-    </div>
-    <div class="col-md-6">
-      <label for="inputCity" class="form-label">City</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="col-md-4">
-      <label for="inputState" class="form-label">State</label>
-      <select id="inputState" class="form-select">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-md-2">
-      <label for="inputZip" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-          Check me out
-        </label>
-      </div>
-    </div>
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary">Sign in</button>
-    </div>
-  </form> --}}
+    <main class="mt-5 pt-3 ">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    @if ($errors->any())
+                    <ul>
+                         @foreach ($errors->all() as $error)
+                             <li class="alert alert-success col-md-12 fw-bold fs-3">{{$error}}</li>
+                          @endforeach
+                     </ul>
+                    @endif
+                    </div>
+                  <form  method="POST" action="{{route('storeEleve')}}" class="container-fluid">
+                    <div class="row">
+                        @if(session()->has("success"))
+                        <div class="alert alert-success">
+                         {{session()->get('success')}}
+                        </div>
+                     @endif
+                      {{-- <div class="col-md-12 fw-bold fs-3 ">Dashboard</div> --}}
+                    </div>
+                    @csrf
+                    <h1>CONNEXION</h1>
+                    <div class="row mb-3">
+                      <div class="col">
+                          <label for="">Nom</label>
+                          <input type="text" class="form-control" placeholder="veiller entrer le nom" name="nom"  value="{{$eleves->nom}}">
+                      </div>
+                      <div class="col">
+                          <label for="">Prénom</label>
+                          <input type="text" class="form-control" placeholder="mettre la description" name="prenom"  value="{{$eleves->prenom}}">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                        <input type="text" class="form-control" id="sexe" name="sex" value="{{$eleves->sexe}}">
+                        <select name="sexe" id="sexe" class="form-select">
+                          {{-- <option value="">Selectionner le sexe</option> --}}
+                          <option value="F" {{$value->sexe=="f"  ? 'selected':''}}>Fille</option>
+                          <option value="M" {{$value->sexe=="m"  ? 'selected':''}}>Garçons</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="">Classe</label>
+                        <select name="classe_id" id="" class="form-select">
+                          <option>Selectionner la classe</option>
+                        @foreach ($classes as $classe)
+                          <option value="{{$classe->id}}">{{$classe->nom_classe}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                      <label for="">date de naissance</label>
+                      <input type="date" class="form-control" placeholder="mettre la date de naissance" name="date_naissance"  value="{{$eleves->date_naissance}}">
+                    </div>
+                    <div class="col">
+                      <label for="">Lieu de naissance</label>
+                      <input type="text" class="form-control" placeholder="mettre la date de naissance" name="lieu_naissance"  value="{{$eleves->date_naissance}}" value="{{$eleves->lieu_naissance}}">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                        <label for="">Nationalité</label>
+                        <input type="text" class="form-control" name="nationalite"  value="{{$eleves->nationalite}}">
+                    </div>
+                    <div class="col">
+                        <label for="">Nom du père</label>
+                        <input type="text" class="form-control" name="nom_pere"  value="{{$eleves->nom_pere}}">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="">Profession du père</label>
+                        <input type="text" class="form-control" name="pere_profession"  value="{{$eleves->pere_profession}}">
+                    </div>
+                    <div class="col">
+                        <label for="">Numero du père</label>
+                        <input type="text" class="form-control" name="tel"  value="{{$eleves->tel}}">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="">Nom de la mère</label>
+                        <input type="text" class="form-control" name="nom_mere"  value="{{$eleves->nom_mere}}">
+                    </div>
+                    <div class="col">
+                        <label for="">Profession de la mère</label>
+                        <input type="text" class="form-control" name="mere_profession"  value="{{$eleves->mere_profession}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="" >Email</label>
+                        <input type="text" class="form-control" name="email"  value="{{$eleves->email}}">
+                    </div>  
+                </div>
+                
+                    
+                    {{-- <div class="container-button2">
+                        <div>
+                            <button>Annuler</button>
+                        </div>
+                        <div>
+                            <button type="submit" name="">Envoyer</button>
+                        </div>
+                    </div> --}}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal">Enregistrer</button>
+                  </div>
+                </form>
+               
+              </div>
+        
+        
+    </main>
+    @endsection

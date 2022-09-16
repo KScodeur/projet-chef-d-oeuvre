@@ -86,76 +86,82 @@ inscription
           </div>
           @csrf
           <h1>CONNEXION</h1>
-          <div class="form-row">
-              <div><label for="">classe</label></div>
-              <div>
-                  <select name="classe_id">
-                      <option value="">selctionner une classe</option>
-                      @foreach ($classes as $classe)
-                          <option value="{{$classe->id}}" name="classe_id">{{$classe->nom_classe}}</option>
-                      @endforeach
-                  </select>
-              </div>
-          </div>
-         <div class="form-row d-flex">
-            <div class="form-group">
+          <div class="row mb-3">
+            <div class="col">
                 <label for="">Nom</label>
-                <input type="text" placeholder="veiller entrer le nom du produit" name="nom">
-            </div> 
-            <div class="form-group">
-              <label for="">Prénom</label>
-              <input type="text" placeholder="mettre la description" name="prenom">
+                <input type="text" class="form-control" placeholder="veiller entrer le nom" name="nom">
             </div>
-         </div>
-          
-          <div>
-              <div><label for="">sexe</label></div>
-              <div>
-                  <select name="" id="">le Sexe
-                      <option value="f">femme</option>
-                      <option value="m">homme</option>
-                  </select>
-              </div>
-          </div>
-         <div class="form-row d-flex">
-            <div class="form-group">
-              <label for="">date de naissance</label>
-              <input type="date" placeholder="mettre la date de naissance" name="date_naissance">
+            <div class="col">
+                <label for="">Prénom</label>
+                <input type="text" class="form-control" placeholder="mettre la description" name="prenom">
             </div>
-            <div class="form-group">
-              <label for="">Lieu de naissance</label>
-              <input type="text" placeholder="mettre la date de naissance" name="lieu_naissance">
-            </div>
-         </div>
-        <div>
-              <div><label for="">nationalité</label> </div>
-              <div><input type="text" placeholder="la mass du prix" name="nationalite"></div> 
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+              <label for="">Sexe</label>
+              <select name="sexe" id="" class="form-select">
+                <option value="">Selectionner le sexe</option>
+                <option value="F" name="sexe">Fille</option>
+                <option value="M" name="sexe">Garçons</option>
+              </select>
           </div>
-          
-          <div>
-              <div><label for="">Nom du pere</label> </div>
-              <div><input type="text" placeholder="mettre la date de naissance" name="nom_pere"></div> 
+          <div class="col">
+              <label for="">Classe</label>
+              <select name="classe_id" id="" class="form-select">
+                <option>Selectionner la classe</option>
+              @foreach ($classes as $classe)
+                <option value="{{$classe->id}}">{{$classe->nom_classe}}</option>
+              @endforeach
+              </select>
           </div>
-          <div>
-              <div><label for="">profession du pere</label> </div>
-              <div><input type="text" placeholder="mettre la date de naissance" name="pere_profession"></div> 
+      </div>
+      <div class="row mb-3">
+          <div class="col">
+            <label for="">date de naissance</label>
+            <input type="date" class="form-control" placeholder="mettre la date de naissance" name="date_naissance">
           </div>
-          <div>
-              <div><label for="">Nulero de telephone</label> </div>
-              <div><input type="text" placeholder="mettre la date de naissance" name="tel"></div> 
+          <div class="col">
+            <label for="">Lieu de naissance</label>
+            <input type="text" class="form-control" placeholder="mettre la date de naissance" name="lieu_naissance">
           </div>
-          <div>
-              <div><label for="">Nom du mère</label> </div>
-              <div><input type="text" placeholder="mettre la date de naissance" name="nom_mere"></div> 
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+              <label for="">Nationalité</label>
+              <input type="text" class="form-control" name="nationalite">
           </div>
-          <div>
-              <div><label for="">profession du mere</label> </div>
-              <div><input type="text" placeholder="mettre la date de naissance" name="mere_profession"></div> 
+          <div class="col">
+              <label for="">Nom du père</label>
+              <input type="text" class="form-control" name="nom_pere">
           </div>
-          <div>
-              <div><label for="">email</label> </div>
-              <div><input type="text" placeholder="mettre la date de naissance" name="email"></div> 
+      </div>
+      <div class="row mb-3">
+          <div class="col">
+              <label for="">Profession du père</label>
+              <input type="text" class="form-control" name="pere_profession">
           </div>
+          <div class="col">
+              <label for="">Numero du père</label>
+              <input type="text" class="form-control" name="tel">
+          </div>
+      </div>
+      <div class="row mb-3">
+          <div class="col">
+              <label for="">Nom de la mère</label>
+              <input type="text" class="form-control" name="nom_mere">
+          </div>
+          <div class="col">
+              <label for="">Profession de la mère</label>
+              <input type="text" class="form-control" name="mere_profession">
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <label for="" >Email</label>
+              <input type="text" class="form-control" name="email">
+          </div>  
+      </div>
+      
           
           {{-- <div class="container-button2">
               <div>
@@ -167,7 +173,7 @@ inscription
           </div> --}}
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Annuler</button>
           <button type="submit" class="btn btn-primary" data-bs-toggle="modal">Enregistrer</button>
         </div>
       </form>
@@ -212,7 +218,7 @@ inscription
                     <td>{{$eleve->prenom}}</td>
                     <td>{{$eleve->prenom}}</td>
                     <td>
-                      <a href="#" class="btn btn-info">Editer</a>
+                      <a href="{{url('edit/'.$eleve->id)}}" class="btn btn-info">Editer</a>
                       <a href="#" class="btn btn-danger">Supprimer</a>
                     </td>
                   </tr>   

@@ -7,6 +7,10 @@
         {{-- début du tableau --}}
         <div class="container row mt-3 ">
             <div class="m-auto">
+              <form action="">
+                <label for="">search</label>
+                <input type="text" name='search'>
+              </form>
               <table class="table table-striped">
                 {{-- table-striped table-hover --}}
                 <thead>
