@@ -5,13 +5,13 @@
    <div class="container-fluid">
     <div class="container">
         <div class="">
-            <div class="col-md-12 fw-bold fs-3 mb-3">La liste de tous les classes</div>
+            <div class="col-md-12 fw-bold fs-3 mb-3">La liste de tous les matières</div>
           </div>
             
         
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Ajout de classe
+            Ajout de matière
         </button>
         
     
@@ -20,19 +20,17 @@
             <thead>
                 <tr>
                     <th>N</th>
-                    <th>Classe</th>
-                    <th>Scolarité de la Classe</th>
-                    <th>Action</th>
+                    <th>nom de la matiere</th>
+                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-            @foreach ($classes as $classe)
+            @foreach ($matieres as $matiere)
                 <tr>
-                    <td>{{$classe->id}}</td>
-                    <td>{{$classe->nom_classe}}</td>
-                    <td>{{$classe->scolarite}}</td>
+                    <td>{{$matiere->id}}</td>
+                    <td>{{$matiere->nom_matiere}}</td>
                     <td> 
-                        <a href="{{url('editClasse/'.$classe->id)}}" class="btn btn-info">Editer</a>
+                        <a href="" class="btn btn-info">Editer</a>
                         {{-- <a href="#" class="btn btn-danger">Supprimer</a> --}}
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBack">
                             Supprimer
@@ -50,22 +48,22 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Ajouter une classe</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Ajouter une matiere</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('storeClasse')}}" method="post">
+                    <form action="" method="post">
                     @csrf
                         <div class="row">
                             <div class="col">
-                                <label for="" >La classe</label>
-                                <input type="text" class="form-control" name="nom_classe">
+                                <label for="" >Nom de la matiere</label>
+                                <input type="text" class="form-control" name="nom_matiere">
                             </div>  
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label for="" >Scolarité</label>
-                                <input type="text" class="form-control" name="scolarite">
+                                <label for="" >Abbreviation</label>
+                                <input type="text" class="form-control" name="">
                             </div>  
                         </div>
                         <div class="modal-footer">
@@ -91,7 +89,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-info" data-bs-dismiss="modal">Non</button>
-              <a href="{{url('deleteClasse/'.$classe->id)}}" class="btn btn-danger">Oui</a>
+              <a href="" class="btn btn-danger">Oui</a>
             </div>
           </div>
         </div>

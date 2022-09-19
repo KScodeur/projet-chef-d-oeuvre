@@ -17,7 +17,7 @@
             </ul>
           @endif
         </div>
-        <form  method="POST" action="{{route('storeEleve')}}" class="container-fluid">
+        <form  method="POST" action="{{route('storeProf')}}" class="container-fluid">
           <div class="row">
               @if(session()->has("success"))
               <div class="alert alert-success">
@@ -27,9 +27,7 @@
             {{-- <div class="col-md-12 fw-bold fs-3 ">Dashboard</div> --}}
           </div>
           @csrf
-          <div class="row">
-                    <div type="button" class="col-md-12 fw-bold fs-3 mb-3">Inscription</div>
-                  </div>
+        <div class="col-md-12 fw-bold fs-3 mb-3">Enregistrer un Professeur</div>
           <div class="row mb-3">
             <div class="col">
                 <label for="">Nom</label>
@@ -49,15 +47,6 @@
                   <option value="M" name="sexe">Garçons</option>
                 </select>
             </div>
-            <div class="col">
-                <label for="">Classe</label>
-                <select name="classe_id" id="" class="form-select">
-                  <option>Selectionner la classe</option>
-                @foreach ($classes as $classe)
-                  <option value="{{$classe->id}}">{{$classe->nom_classe}}</option>
-                @endforeach
-                </select>
-            </div>
           </div>
           <div class="row mb-3">
               <div class="col">
@@ -75,28 +64,18 @@
                 <input type="text" class="form-control" name="nationalite">
             </div>
             <div class="col">
-                <label for="">Nom du père</label>
-                <input type="text" class="form-control" name="nom_pere">
+                <label for="">Numero</label>
+                <input type="text" class="form-control" name="">
             </div>
           </div>
           <div class="row mb-3">
             <div class="col">
-                <label for="">Profession du père</label>
-                <input type="text" class="form-control" name="pere_profession">
+                <label for="">Grade</label>
+                <input type="text" class="form-control" name="grade">
             </div>
             <div class="col">
-                <label for="">Numero du père</label>
-                <input type="text" class="form-control" name="tel">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col">
-                <label for="">Nom de la mère</label>
-                <input type="text" class="form-control" name="nom_mere">
-            </div>
-            <div class="col">
-                <label for="">Profession de la mère</label>
-                <input type="text" class="form-control" name="mere_profession">
+                <label for="">specialite</label>
+                <input type="text" class="form-control" name="specialite">
             </div>
           </div>
           <div class="row">

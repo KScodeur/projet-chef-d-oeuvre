@@ -9,7 +9,7 @@
                <span class="navbar-toggler-icon" data-bs-target="#offcanvasExample"></span>
              </button>  
            <!-- declancheur hors canevas  -->
-               <a class="navbar-brand fw-bold text-uppercase me-auto" href="#">myschools</a>
+               <a class="navbar-brand fw-bold text-uppercase me-auto" href="/eleve">myschools</a>
                <button class="navbar-toggler my-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
                </button>
@@ -20,7 +20,7 @@
             <!-- faire les recherche -->
             <form class="d-flex ms-auto" role="search" >
               <div class="input-group ">
-                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" class="form-control" placeholder="Rechercher" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button class="btn btn-primary " type="button" id="button-addon2">
                   <i class="bi bi-search"></i>
                 </button>
@@ -28,7 +28,7 @@
             </form>
             <!--  -->
             <!-- profil utilisateur -->
-            {{-- <span class="text text-white">{{$data->nom}}</span> --}}
+            <span class="text text-white">{{$data->nom}}</span>
              <ul class="navbar-nav mb-2 mb-lg-0">
                  <li class="nav-item dropdown">
                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

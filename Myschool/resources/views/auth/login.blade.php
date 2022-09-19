@@ -1,147 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V1</title>
+	<title>Myschool login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	{{-- <link rel="icon" type="image/png" href="images/icons/favicon.ico"/> --}}
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" href="/css/auth.css">
-<!--===============================================================================================-->
+	{{-- <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"> --}}
+	<link rel="stylesheet" href="/css/login.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
 </head>
 <body>
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="images/img-01.png" alt="IMG">
-				</div>
-
-				<form class="login100-form validate-form" method="POST" action="{{route('login_user')}}">
-                @csrf
-                    @foreach ($errors->all() as $error)
-                    {{$error}} 
-                    @endforeach    
-					<span class="login100-form-title">
-						Member Login
-					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
+	<section class="h-100 gradient-form" style="background-color: #eee;">
+		<div class="container py-5 h-100">
+		  <div class="row d-flex justify-content-center align-items-center h-100">
+			<div class="col-xl-10">
+			  <div class="card rounded-3 text-black">
+				<div class="row g-0">
+				  <div class="col-lg-6">
+					<div class="card-body p-md-5 mx-md-4">
+	  
+					  <div class="text-center">
+						<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+						  style="width: 185px;" alt="logo">
+						<h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+					  </div>
+	  
+					  <form class="login100-form validate-form" method="POST" action="{{route('login_user')}}">
+						@csrf
+						@foreach ($errors->all() as $error)
+						{{$error}} 
+						@endforeach
+						<p>Veuillez se connecter a votre compte</p>
+						
+						<div class="form-outline mb-4">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-                        <span class="text-danger">@error('name'){{$message}} @enderror</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
+							<label class="form-label" for="form2Example11">Email</label>
+						  <input type="email" id="form2Example11" class="form-control" name="email"
+							placeholder="adresse email" />
+						</div>
+						<div><span class="text-danger">@error('name'){{$message}} @enderror</span></div>
+	  
+						<div class="form-outline mb-4">
 							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-                        <span class="text-danger">@error('name'){{$message}} @enderror</span>
+							<label class="form-label" for="form2Example22">Mot de passe</label>
+						  <input type="password" id="form2Example22" class="form-control" name="password"/>
+						</div>
+	  
+						<div class="text-center pt-1 mb-5 pb-1">
+						  <button class="btn btn-primary" type="submit">Log
+							in</button>
+						  {{-- <a class="text-muted" href="#!">Forgot password?</a> --}}
+						</div>
+	  
+						<div class="d-none">
+							<div class="d-flex align-items-center justify-content-center pb-4">
+								<p class="mb-0 me-2">Don't have an account?</p>
+								<button type="button" class="btn btn-outline-danger">Create new</button>
+							  </div>
+						</div>
+	  
+					  </form>
+	  
 					</div>
-					
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" type="submit">
-							Login
-						</button>
+				  </div>
+				  <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+					<div class="text-white px-3 py-4 p-md-5 mx-md-4">
+					  <h4 class="mb-4">Bienvenue sur l'appli Myschool</h4>
+					  <p class="small mb-0">Myschool est une application de gestion administrative d'ecole plus besoin d'ecrire sur les fiches </p>
 					</div>
-
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
-					</div>
-
-					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-	<a href="authentificate">s'inscrire</a>
-    <a href="{{route('dashboard')}}" class="btn btn-info">acceder au dashboard</a>
-
-
-					</div>
-				</form>
+				  </div>
+				</div>
+			  </div>
 			</div>
+		  </div>
 		</div>
-	</div>
-
-	
-
-	
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
+	  </section>
 </body>
 </html>
 
-
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>authentification</title>
-</head>
-<body>
-  <div>
-    <form action="" method="post">
-        <h1>Page d'authentification</h1>
-    </form>
-</div>
-    <a href="{{route('dashboard')}}" class="btn btn-info">acceder au dashboard</a>
-    <h1>login</h1>
-    <div>
-        @foreach ($errors->all() as $error)
-           {{$error}} 
-        @endforeach
-        <form action="{{route('login_user')}}" method="post">
-        @csrf
-            <label for="">nom d'utilisateur</label>
-            <input type="text" value="" name="nom_utlisateur">
-
-            <label for="">mot de passe  </label>
-            <input type="password" value="" name="password">
-            <button type="submit">Se connecter</button>
-        </form> 
-    </div>
-    <br>
-    <a href="authentificate">s'inscrire</a>
-   
-</div>
-    
-</body>
-</html> --}}

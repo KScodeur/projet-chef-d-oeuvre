@@ -16,18 +16,23 @@ class EleveController extends Controller{
 //    {
 //        return view('authentification');
 //    }
-    
+
 
     // pour inserer un "élève" c-a-dire l"affichage de la page de formulaire
     public function create()
     {
+        if(Session::has('loginId')){
+            $data=Utilisateur::where('id',Session::get('loginId'))->first();
+            }else{
+                return redirect('/');
+            }
         $classes=Classe::all();
         // $eleve = new Eleve;
         // $eleve->nom = $request->nom;
         // $eleve->prenom = $request->prenom;
         // $eleve->nationalité = $request->nationalité;
             // return $request->input();
-            return view('createEleve',compact('classes'));
+            return view('createEleve',compact('classes','data'));
     }
 
     // cette fonction ci dessous permet d'enregistrer l'élève après l'insertion dans le formulaire.
@@ -61,12 +66,17 @@ class EleveController extends Controller{
         // return dd($_POST);
 
     // reviens sur la meme page ou il y a le formulaire et affiche le message
-        return redirect('/eleve')->with("success","élève ajouter avec succès");
+        return back()->with("success","élève ajouter avec succès");
     }
 
 
     public function getAll()
     {
+        if(Session::has('loginId')){
+            $data=Utilisateur::where('id',Session::get('loginId'))->first();
+            }else{
+                return redirect('/');
+            }
         $eleves=Eleve::orderBy("nom","asc")->paginate(10);
         $classes=Classe::get();
         if(isset($_GET['search'])){
@@ -74,16 +84,73 @@ class EleveController extends Controller{
             $someone=Eleve::where('nom','LIKE','%'.$search.'%')->get();
        
        
-        return view('getAllEleves',compact('eleves','classes','someone'));
+        return view('getAllEleves',compact('eleves','classes','someone','data'));
     }else{
-        return view('getAllEleves',compact('eleves','classes'));
+        return view('getAllEleves',compact('eleves','classes','data'));
     }
     }
-    public function edit($id){
+    
+    public function edit($id)
+    {
+        if(Session::has('loginId')){
+            $data=Utilisateur::where('id',Session::get('loginId'))->first();
+            }else{
+                return redirect('/');
+            }
             $classes=Classe::get();
             $eleves=Eleve::find($id);
-            return view('update',compact('classes','eleves'));
+            return view('update',compact('classes','eleves','data'));
     }
+
+    public function update(Request $request, $id)
+    {
+        // if(Session::has('loginId')){
+        //     $data=Utilisateur::where('id',Session::get('loginId'))->first();
+        //     }else{
+        //         return redirect('/');
+        //     }
+        
+        $eleves = Eleve::find($id);
+        $input = $request->all();
+        $eleves->update($input);
+        return redirect('create/list')->with('success', 'mise a jour accompli');  
+    }
+    public function delete($id)
+    {
+        $data=Eleve::find($id);
+        // if ($data != null) {
+        //     $data->delete();
+        //     return redirect()->route('dashboard')->with(['message'=> 'Successfully deleted!!']);
+        // }
+        $data->delete();
+        return redirect('create/list')->with("success","élève supprimer avec succès");
+    }
+   
+    // public function search(){
+    //     $eleves=Eleve::get();
+    //     $classes=Classe::get();
+    //     if(isset($_GET['search'])){
+    //         $search=$_GET['search'];
+    //         $someone=Eleve::where('nom','LIKE','%'.$search.'%')->get();
+    //     return view('getAllEleves',compact('eleves','classes','someone'));
+    //     }else{
+    //         return view('getAllEleves',compact('eleves','classes'));
+    //     }
+       
+    //     // $search=request()->input('search');
+    //     // dd($search);
+    //     // $searcheleves=Eleve::where('nom','LIKE','%'.$search.'%')->paginate(6); 
+    //     // return view('search',compact('eleves','classes','searcheleves'))->with('searcheleves', $searcheleves);
+    //     return view('search',compact('eleves','classes','searcheleves'));
+    // }
+    // public function search(){
+    //     $eleves=Eleve::get();
+    //     $classes=Classe::get();
+    //     $search=request()->input('search');
+    //     // dd($search);
+    //     $searcheleves=Eleve::where('nom','LIKE','%'.$search.'%')->paginate(6); 
+    //     return view('search',compact('eleves','classes','searcheleves'))->with('searcheleves', $searcheleves);
+    // }
     // public function update(Request $request,$id)
     // {
     //     // $eleve=Eleve::get();
@@ -132,18 +199,6 @@ class EleveController extends Controller{
         
     //     return redirect('create/list')->with("success","élève ajouter avec succès"); 
     // }
-    public function delete($id)
-    {
-        $data=Eleve::find($id);
-        $data->delete();
-        return redirect('create/list')->with("success","élève supprimer avec succès");
-    }
-    public function update(Request $request, $id)
-    {
-        $eleves = Eleve::find($id);
-        $input = $request->all();
-        $eleves->update($input);
-        return redirect('create/list')->with('success', 'mise a jour accompli');  
-    }
+ 
 } 
 ?> 

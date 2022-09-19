@@ -69,10 +69,10 @@
 
              {{-- les emploi du temps --}}
              <li class="ms-2">
-              <a href="#" class="nav-link px-1 active">
+              <a href="{{route('matieres')}}" class="nav-link px-1 active">
                 {{-- <span> <i class="bi bi-speedometer2"></i></span> --}}
                 <span class="me-2 "><img src="/images/emploi_du_temps.png" alt=""></span>
-                <span>Emploi du temps</span>
+                <span>Matières</span>
               </a>
             </li>
             {{-- fin des emplo du temps --}}
@@ -88,7 +88,7 @@
               <div class="collapse ms-4" id="collapseExample2">
                <ul class="navbar-nav ps-3 ">
                   <li >
-                    <a href="#" class="nav-link active" >
+                    <a href="{{route('createProf')}}" class="nav-link active" >
                       {{-- <span class="me-2"><i class="bi bi-layout-split"></i></span> --}}
                       <span>Nouveau</span>
                     </a>
