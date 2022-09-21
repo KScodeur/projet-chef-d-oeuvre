@@ -10,12 +10,13 @@
         <div class="container row mt-3 ">
             <div class="m-auto">
               <form action="" class="d-flex mr-3">
-                <input type="text" name='search'>
+                <input type="text" name='search' value="{{$search}}" placeholder="rechercher ">
                 <button type="submit" class="btn btn-info">
                   <i class="bi bi-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <table class="table table-striped">
+              <input type="text"  id="search"/>
+              <table class="table table-striped" id="eleves">
                 {{-- table-striped table-hover --}}
                 <thead>
                   <tr >
@@ -25,13 +26,13 @@
                     <th>Sexe</th>
                     <th>Classe</th>
                     <th>Date de naissance</th>
-                    <th>Matricule</th>
+                    <th>Matricule</th>  
                     <th>Est inscrit</th>
                     <th>Action</th>
                   </tr>
-                </thead>
+                </thead> 
               
-                <tbody >
+                <tbody id="tbody">
                   @foreach ($eleves as $eleve)
                   <tr>
                       {{-- <td>{{$eleve->id}}</td> --}}
@@ -49,34 +50,59 @@
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Supprimer
                         </button>
+                         <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Supprimer</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <h4>Voulez-vous vraiment faire la suppression?</h4>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-info" data-bs-dismiss="modal">Non</button>
+                                <a href="{{url('delete/'.$eleve->id)}}" class="btn btn-danger">Oui</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </td>
                     </tr>   
                   @endforeach
                 </tbody>
-                {{$eleves->links()}}
+                {{-- <tbody id="Content"></tbody> --}}
+                {{-- {{$eleves->links()}} --}}
               </table>
               <!-- Button trigger modal -->
           </div>
           </div>
         {{-- fin du tableeau --}}
-          <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Supprimer</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <h4>Voulez-vous vraiment faire la suppression?</h4>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Non</button>
-                    <a href="{{url('delete/'.$eleve->id)}}" class="btn btn-danger">Oui</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+         
     </div>
    </main>
+   {{-- <script type="text/javascript">
+    let search=document.getElementById('search');
+      search.addEventListener('input',function() {
+        let value = search.value ;
+        let tbody = document.getElementById('tbody')
+        tbodyinnerHTML=
+    });
+    
+  </script> --}}
+  {{-- <script type="text/javascript">
+    $('#search').on('keyup',function() {
+      $value=$(this).val();
+       $.ajax({
+          type:'get',
+          url: '{{URL::to('search')}}',
+          data:{'search':$value},
+          success:function(data){
+            console.logo(data);
+            $('#Content').html(data);
+          }
+       });
+    }) --}}
+  {{-- </script> --}}
 @endsection

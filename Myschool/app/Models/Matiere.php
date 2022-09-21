@@ -12,6 +12,6 @@ class Matiere extends Model
     protected $fillable=["nom_matiere"];
     public function professeurs()
     {
-        return $this->hasMany(Professeur::class);
+        return $this->belongsToMany (Professeur::class,'matiere_professeur');
     }
 }

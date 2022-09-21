@@ -8,7 +8,7 @@
         <div class="container row mt-3 ">
             <div class="m-auto">
               <form action="{{route('eleves.search')}}" class="d-flex mr-3">
-                <input type="text" name='search'>
+                <input type="search" name='search'>
                 <button type="submit" class="btn btn-info">
                   <i class="bi bi-search" aria-hidden="true"></i>
                 </button>
@@ -28,7 +28,7 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-              
+                  
                 <tbody >
                   @foreach ($eleves as $eleve)
                   <tr>

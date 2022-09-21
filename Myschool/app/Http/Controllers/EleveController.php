@@ -70,24 +70,35 @@ class EleveController extends Controller{
     }
 
 
-    public function getAll()
+    public function getAll(Request $request)
     {
         if(Session::has('loginId')){
             $data=Utilisateur::where('id',Session::get('loginId'))->first();
             }else{
                 return redirect('/');
             }
-        $eleves=Eleve::orderBy("nom","asc")->paginate(10);
-        $classes=Classe::get();
-        if(isset($_GET['search'])){
-            $search=$_GET['search'];
-            $someone=Eleve::where('nom','LIKE','%'.$search.'%')->get();
+        $search=$request['search'] ?? "";
+        if ($search !="") {
+            // where
+            $eleves=Eleve::where('nom','LIKE','%'.$search.'%')->get(); 
+            $classes=Classe::get();
+            
+        }else{
+            $eleves=Eleve::orderBy("nom","asc")->paginate(10); 
+            $classes=Classe::get();
+        }
+        return view('getAllEleves',compact('eleves','classes','data','search'));
+
+        
+    //     if(isset($_GET['search'])){
+    //         $search=$_GET['search'];
+    //         $someone=Eleve::where('nom','LIKE','%'.$search.'%')->get();
        
        
-        return view('getAllEleves',compact('eleves','classes','someone','data'));
-    }else{
-        return view('getAllEleves',compact('eleves','classes','data'));
-    }
+    //     return view('getAllEleves',compact('eleves','classes','someone','data'));
+    // }else{
+    //     return view('getAllEleves',compact('eleves','classes','data'));
+    // }
     }
     
     public function edit($id)
@@ -118,13 +129,25 @@ class EleveController extends Controller{
     public function delete($id)
     {
         $data=Eleve::find($id);
-        // if ($data != null) {
-        //     $data->delete();
-        //     return redirect()->route('dashboard')->with(['message'=> 'Successfully deleted!!']);
-        // }
-        $data->delete();
+        if ($data != null) {
+            $data->delete();
         return redirect('create/list')->with("success","élève supprimer avec succès");
+
+        //     return redirect()->route('dashboard')->with(['message'=> 'Successfully deleted!!']);
+        }
+        // $data->delete();
+        // return redirect('create/list')->with("success","élève supprimer avec succès");
     }
+    // public function search(Request $request){
+    //     $eleves=Eleve::where('nom','LIKE','%'.$request->search.'%')->get();
+    //     foreach($eleves as $eleve){
+    //         $output=
+    //         '<tr>
+    //         <td>'.$eleve->nom.'</td>
+    //         </tr>';
+    //     }
+    //     return response($output);
+    // }
    
     // public function search(){
     //     $eleves=Eleve::get();
@@ -201,4 +224,4 @@ class EleveController extends Controller{
     // }
  
 } 
-?> 
+ 

@@ -18,6 +18,10 @@
 .sidebar-link[aria-expanded="true"] .right-icon {
     transform: rotate(180deg);
 }
+.hover:hover{
+    background-color: aliceblue;
+    color: black;
+}
 
 tr,td,th{
     text-align: center;

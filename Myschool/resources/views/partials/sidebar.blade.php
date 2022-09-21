@@ -8,7 +8,7 @@
                   <div class="text-muted small fw-bold text-uppercase ">Core</div>
                 </li> --}}
                 <hr class="dropdown-divider mt-0" />
-                <li class="ms-2">
+                <li class="ms-2 hover">
                   <a href="{{route('dashboard')}}" class="nav-link px-1 active ">
                     {{-- <span> <i class="bi bi-speedometer2"></i></span> --}}
                     <span class="me-2 "><img src="/images/dashboard-line.png" alt=""></span>
@@ -94,7 +94,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link active" >
+                    <a href="{{route('readProf')}}" class="nav-link active" >
                       {{-- <span class="me-2"><i class="bi bi-layout-split"></i></span> --}}
                       <span>Nom et matière</span>
                     </a>

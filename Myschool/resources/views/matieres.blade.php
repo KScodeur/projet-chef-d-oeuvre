@@ -3,7 +3,7 @@
 @section('content')
 <main class="mt-5 pt-3 ">
    <div class="container-fluid">
-    <div class="container">
+    <div class="mx-3">
         <div class="">
             <div class="col-md-12 fw-bold fs-3 mb-3">La liste de tous les matières</div>
           </div>

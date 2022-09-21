@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classe;
+use App\Models\Eleve;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -25,8 +26,10 @@ class ClasseController extends Controller
             }else{
                 return redirect('/');
             }
+        $eleves=Eleve::get();
+        $sixiemes=Eleve::where('classe_id',1)->get();
         $classes=Classe::get();
-        return view('listeParClasse',compact('classes','data'));
+        return view('listeParClasse',compact('classes','data','sixiemes'));
     }
     public function store(Request $request)
     {

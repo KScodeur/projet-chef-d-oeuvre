@@ -49,7 +49,7 @@ Route::get('create/list',[EleveController::class,'getAll'])->name('readEleve');
 // pour afficher les classes et scolarité
 Route::get('classes/scolarite',[ClasseController::class,'index'])->name('classes');
 
-// Route::get('/search',[EleveController::class,'search'])->name('eleves.search');
+Route::get('/search',[EleveController::class,'search'])->name('eleves.search');
 // route pour les eleves par classe
 Route::get('list/classes',[ClasseController::class,'getByClass'])->name('listByClass');
 
@@ -66,6 +66,8 @@ Route::get('deleteClasse/{id}',[ClasseController::class,'deleteClasse'])->name('
 // Professeur
 // page d'inscription du prof
 Route::get('prof/create',[ProfController::class,'create'])->name('createProf');
+//la liste des professeurs 
+Route::get('prof/list',[ProfController::class,'getAll'])->name('readProf');
 
 // enregistrer un professeur
 Route::post('prof/create',[ProfController::class,'store'])->name('storeProf');
