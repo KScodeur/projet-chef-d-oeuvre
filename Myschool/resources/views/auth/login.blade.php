@@ -24,9 +24,8 @@
 					<div class="card-body p-md-5 mx-md-4">
 	  
 					  <div class="text-center">
-						<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-						  style="width: 185px;" alt="logo">
-						<h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+						<img src="/images/index.png" alt="" width="300px">
+						<h5 class="mt-1 mb-5 pb-1">L'info securisé</h5>
 					  </div>
 	  
 					  <form class="login100-form validate-form" method="POST" action="{{route('login_user')}}">
@@ -70,7 +69,7 @@
 				  <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
 					<div class="text-white px-3 py-4 p-md-5 mx-md-4">
 					  <h4 class="mb-4">Bienvenue sur l'appli Myschool</h4>
-					  <p class="small mb-0">Myschool est une application de gestion administrative d'ecole plus besoin d'ecrire sur les fiches </p>
+					  <p class="small mb-0">Myschool est une application de gestion administrative d'ecole</p>
 					</div>
 				  </div>
 				</div>

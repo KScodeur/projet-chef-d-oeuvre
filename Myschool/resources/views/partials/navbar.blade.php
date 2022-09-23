@@ -28,7 +28,7 @@
             </form>
             <!--  -->
             <!-- profil utilisateur -->
-            <span class="text text-white">{{$data->nom}}</span>
+            <span class="text text-white ms-3">{{$data->nom}}</span>
              <ul class="navbar-nav mb-2 mb-lg-0">
                  <li class="nav-item dropdown">
                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

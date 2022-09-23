@@ -22,7 +22,6 @@
                     <th>N</th>
                     <th>nom de la matiere</th>
                     <th>Abréviation</th>
-                    <th>Enseignant(s)</th>
                      <th>Action</th>
                 </tr>
             </thead>
@@ -32,14 +31,13 @@
                      <td>{{$loop->index+1}}</td>
                     <td>{{$matiere->nom_matiere}} </td>
                     <td>{{$matiere->abreviation}} </td>
-                    {{-- <td>{{$matiere->professeurs()->nom}} </td> --}}
                 
-                    <td>
+                    {{-- <td>
                         @foreach ($matiere->professeurs as $professeur)
                             <li>{{$professeur->nom}} {{$professeur->prenom}} </li>
                         @endforeach
       
-                    </td>
+                    </td> --}}
                     <td> 
                         <a href="" class="btn btn-info">Editer</a>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBack">

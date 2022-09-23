@@ -5,7 +5,7 @@
    <div class="container-fluid">
     <div class="mx-3">
         <div class="mb-2">
-            <div class="col-md-12 fw-bold fs-3 mb-3">La liste des enseignants et les matières enseignés</div>
+            <div class="col-md-12 fw-bold fs-3 mb-3">La liste des enseignants</div>
             <div>
                 <span>Professeurs</span> /<span><a href="{{route('createProf')}}">Nouveau</a></span> /<span>Liste des prof</span>
               </div>
@@ -29,7 +29,6 @@
                     <th>Date de naissance</th>
                     <th>grade</th>
                     <th>spécialité</th>
-                    <th>Matières enseignés</th>
                      <th>Action</th>
                 </tr>
             </thead>
@@ -61,7 +60,6 @@
                         <td>{{$professeur->date_naissance}}</td>
                         <td>{{$professeur->grade}}</td>
                         <td>{{$professeur->specialite}}</td>
-                        <td></td>
                         <td> 
                             <a href="" class="btn btn-info">Editer</a>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBack">

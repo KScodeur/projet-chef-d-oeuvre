@@ -8,7 +8,7 @@
                   <div class="text-muted small fw-bold text-uppercase ">Core</div>
                 </li> --}}
                 <hr class="dropdown-divider mt-0" />
-                <li class="ms-2 hover">
+                <li class="ms-2">
                   <a href="{{route('dashboard')}}" class="nav-link px-1 active ">
                     {{-- <span> <i class="bi bi-speedometer2"></i></span> --}}
                     <span class="me-2 "><img src="/images/dashboard-line.png" alt=""></span>

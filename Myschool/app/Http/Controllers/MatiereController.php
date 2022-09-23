@@ -16,8 +16,8 @@ class MatiereController extends Controller
         }else{
             return redirect('/');
         }
-        // $matieres=Matiere::get();
-        $matieres=Matiere::with('professeurs')->get();
+        $matieres=Matiere::get();
+        // $matieres=Matiere::with('professeurs')->get();
 
         return view('matieres',compact('matieres','data'));
     }
