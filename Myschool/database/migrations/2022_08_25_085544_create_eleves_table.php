@@ -30,7 +30,7 @@ class CreateElevesTable extends Migration
             $table->string('mere_profession');
             $table->string('email');
             $table->timestamps();
-            $table->foreign('classe_id')->references('id')->on('classes');
+            $table->foreign('classe_id')->references('id')->on('classes')->onDelete('cascade');
     });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matiere;
 use App\Models\Professeur;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
@@ -17,7 +18,10 @@ class ProfController extends Controller
             }else{
                 return redirect('/');
             }
-        return  view('createProf',compact('data'));
+        // $matieres=Matiere::get();
+        $matieres=Matiere::with('professeurs')->get();
+
+        return  view('createProf',compact('data','matieres'));
     }
     public function store(Request $request)
     {
@@ -43,14 +47,30 @@ class ProfController extends Controller
     // reviens sur la meme page ou il y a le formulaire et affiche le message
         return back()->with("success","Professeur ajouter avec succès");
     }
-    public function getAll(){
+    public function getAll(Request $request){
         if(Session::has('loginId')){
             $data=Utilisateur::where('id',Session::get('loginId'))->first();
             }else{
                 return redirect('/');
             }
-        // $professeurs=Professeur::get();
-        $professeurs=Matiere_professeur::get();
-        return view('profList',compact('data','professeurs'));
+
+            $search=$request['search'] ?? "";
+            if ($search !="") {
+                // where
+                $professeurs=Professeur::where('nom','LIKE','%'.$search.'%')
+                                        ->orwhere('prenom','LIKE','%'.$search.'%')
+                                        ->orwhere('sexe','LIKE','%'.$search.'%')
+                                        ->orwhere('grade','LIKE','%'.$search.'%')
+                                        ->orwhere('specialite','LIKE','%'.$search.'%')
+                                        ->get(); 
+                $matieres=Matiere::with('professeurs')->get();
+                
+            }else{
+                $matieres=Matiere::with('professeurs')->get();
+                $professeurs=Professeur::get();
+            }
+        // $professeurs->with('matieres')->get();
+        // $professeurs->with('matieres')->get();
+        return view('profList',compact('data','matieres','professeurs','search'));
     }
 }

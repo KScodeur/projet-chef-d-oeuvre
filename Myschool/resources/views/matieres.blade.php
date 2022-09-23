@@ -21,23 +21,63 @@
                 <tr>
                     <th>N</th>
                     <th>nom de la matiere</th>
+                    <th>Abréviation</th>
+                    <th>Enseignant(s)</th>
                      <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-            @foreach ($matieres as $matiere)
+                @foreach ($matieres as $matiere)
+                <tr>
+                     <td>{{$loop->index+1}}</td>
+                    <td>{{$matiere->nom_matiere}} </td>
+                    <td>{{$matiere->abreviation}} </td>
+                    {{-- <td>{{$matiere->professeurs()->nom}} </td> --}}
+                
+                    <td>
+                        @foreach ($matiere->professeurs as $professeur)
+                            <li>{{$professeur->nom}} {{$professeur->prenom}} </li>
+                        @endforeach
+      
+                    </td>
+                    <td> 
+                        <a href="" class="btn btn-info">Editer</a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBack">
+                            Supprimer
+                        </button>
+                             <!-- Modal de supprimer-->
+     <div class="modal fade" id="staticBack" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Supprimer</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h4>Voulez-vous vraiment faire la suppression?</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-bs-dismiss="modal">Non</button>
+              <a href="{{url('deleteMatiere/'.$matiere->id)}}" class="btn btn-danger">Oui</a>
+            </div>
+          </div>
+        </div>
+      </div>
+                    </td>
+                </tr>
+            @endforeach
+            {{-- @foreach ($matieres as $matiere)
                 <tr>
                     <td>{{$matiere->id}}</td>
                     <td>{{$matiere->nom_matiere}}</td>
                     <td> 
                         <a href="" class="btn btn-info">Editer</a>
-                        {{-- <a href="#" class="btn btn-danger">Supprimer</a> --}}
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBack">
                             Supprimer
                         </button>
                     </td>
                 </tr>
-            @endforeach
+            @endforeach --}}
             </tbody>
         </table>
    </div>
@@ -52,7 +92,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post">
+                    <form action="{{route('storeMatiere')}}" method="post">
                     @csrf
                         <div class="row">
                             <div class="col">
@@ -63,7 +103,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="" >Abbreviation</label>
-                                <input type="text" class="form-control" name="">
+                                <input type="text" class="form-control" name="abreviation">
                             </div>  
                         </div>
                         <div class="modal-footer">
@@ -76,23 +116,6 @@
             </div>
         </div>
     </div>
-     <!-- Modal de supprimer-->
-     <div class="modal fade" id="staticBack" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Supprimer</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <h4>Voulez-vous vraiment faire la suppression?</h4>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-info" data-bs-dismiss="modal">Non</button>
-              <a href="" class="btn btn-danger">Oui</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
 </main>
 @endsection

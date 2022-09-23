@@ -4,15 +4,19 @@
 <main class="mt-5 pt-3 ">
    <div class="container-fluid">
     <div class="mx-3">
-        <div class="">
+        <div class="mb-2">
             <div class="col-md-12 fw-bold fs-3 mb-3">La liste des enseignants et les matières enseignés</div>
+            <div>
+                <span>Professeurs</span> /<span><a href="{{route('createProf')}}">Nouveau</a></span> /<span>Liste des prof</span>
+              </div>
           </div>
-            
-        
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Ajout de matière
-        </button>
+     
+        <form action="" class="d-flex mr-3">
+            <input type="text" name='search' value="{{$search}}" placeholder="rechercher ">
+            <button type="submit" class="btn btn-info">
+              <i class="bi bi-search" aria-hidden="true"></i>
+            </button>
+          </form>
         
     
     
@@ -30,27 +34,45 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach ($professeurs as $professeur)
+            {{-- @foreach ($matieres as $matiere)
                 <tr>
-                    <td>{{$loop->index+1}}</td>
-                    <td>{{$professeur->nom}} {{$professeur->prenom}}</td>
-                    <td>{{$professeur->sexe}}</td>
-                    <td>{{$professeur->date_naissance}}</td>
-                    <td>{{$professeur->grade}}</td>
-                    <td>{{$professeur->specialite}}</td>
+                     <td>{{$loop->index+1}}</td>
+                    <td>{{$matiere->nom_matiere}} </td>
+                
                     <td>
-                           {{-- {{$professeur->matieres->nom_matiere}} --}}
-                    
+                        @foreach ($matiere->professeurs as $professeur)
+                            <span>{{$professeur->nom}}</span>
+                        @endforeach
+      
                     </td>
                     <td> 
                         <a href="" class="btn btn-info">Editer</a>
-                        {{-- <a href="#" class="btn btn-danger">Supprimer</a> --}}
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBack">
                             Supprimer
                         </button>
                     </td>
                 </tr>
+            @endforeach --}}
+            @foreach ($professeurs as $professeur)
+                    <tr>
+                        <td>{{$loop->index+1}}</td>
+                        <td>{{$professeur->nom}}</td>
+                        <td>{{$professeur->sexe}}</td>
+                        <td>{{$professeur->date_naissance}}</td>
+                        <td>{{$professeur->grade}}</td>
+                        <td>{{$professeur->specialite}}</td>
+                        <td></td>
+                        <td> 
+                            <a href="" class="btn btn-info">Editer</a>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBack">
+                                Supprimer
+                            </button>
+                        </td>
+                    </tr>
             @endforeach
+           
+      
+            
             </tbody>
         </table>
    </div>

@@ -5,6 +5,13 @@
     <h1>
         La liste des élèves par classes
     </h1>
+    <div class="mb-2">
+      <span>Elèves</span>/
+      <span><a href="{{route('createEleve')}}">Inscription</a></span>/
+      <span><a href="{{route('readEleve')}}">Liste totale</a></span>/
+      <span>Liste par classe</span>
+
+    </div>
     comment faire le join
     @foreach ($classes as $classe)
     <span class="btn btn-primary btn-lg me-2">{{$classe->nom_classe}}</span>

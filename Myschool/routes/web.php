@@ -41,18 +41,11 @@ Route::get('eleve/create',[EleveController::class,'create'])->name('createEleve'
 
 // enregistrer un eleve
 Route::post('eleve/create',[EleveController::class,'store'])->name('storeEleve');
-// enregistrer une classe
-Route::post('classe/create',[ClasseController::class,'store'])->name('storeClasse');
 
 // afficher tout les élèves
 Route::get('create/list',[EleveController::class,'getAll'])->name('readEleve');
-// pour afficher les classes et scolarité
-Route::get('classes/scolarite',[ClasseController::class,'index'])->name('classes');
-
+//pour rechercher les eleves
 Route::get('/search',[EleveController::class,'search'])->name('eleves.search');
-// route pour les eleves par classe
-Route::get('list/classes',[ClasseController::class,'getByClass'])->name('listByClass');
-
 // pour le bouton editer
 Route::get('/edit/{id}',[EleveController::class,'edit'])->name('edit');
 // l'action du boutton editer
@@ -60,6 +53,20 @@ Route::put('update-data/{id}',[EleveController::class,'update'])->name('update')
 
 // pour supprimer un élève
 Route::get('delete/{id}',[EleveController::class,'delete']);
+
+
+
+// Classe
+
+// enregistrer une classe
+Route::post('classe/create',[ClasseController::class,'store'])->name('storeClasse');
+
+// pour afficher les classes et scolarité
+Route::get('classes/scolarite',[ClasseController::class,'index'])->name('classes');
+
+// route pour les eleves par classe
+Route::get('list/classes',[ClasseController::class,'getByClass'])->name('listByClass');
+
 // pour supprimer une classe
 Route::get('deleteClasse/{id}',[ClasseController::class,'deleteClasse'])->name('deleteClasse');
 
@@ -68,6 +75,8 @@ Route::get('deleteClasse/{id}',[ClasseController::class,'deleteClasse'])->name('
 Route::get('prof/create',[ProfController::class,'create'])->name('createProf');
 //la liste des professeurs 
 Route::get('prof/list',[ProfController::class,'getAll'])->name('readProf');
+//pour rechercher un professeur
+Route::get('prof/search',[ProfController::class,'search'])->name('prof.search');
 
 // enregistrer un professeur
 Route::post('prof/create',[ProfController::class,'store'])->name('storeProf');
@@ -75,5 +84,7 @@ Route::post('prof/create',[ProfController::class,'store'])->name('storeProf');
 // matière
 Route::get('/matieres',[MatiereController::class,'read'])->name('matieres');
 // enregistrer une matière
-Route::post('matiere/create',[ClasseController::class,'store'])->name('storeClasse');
+Route::post('matiere/create',[MatiereController::class,'store'])->name('storeMatiere');
+// pour supprimer une matiere
+Route::get('deleteMatiere/{id}',[MatiereController::class,'delete'])->name('deleteMatiere');
 

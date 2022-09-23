@@ -34,9 +34,9 @@
                     <td> 
                         <a href="{{url('editClasse/'.$classe->id)}}" class="btn btn-info">Editer</a>
                         {{-- <a href="#" class="btn btn-danger">Supprimer</a> --}}
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBack">
+                        {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBack">
                             Supprimer
-                        </button>
+                        </button> --}}
                     </td>
                 </tr>
             @endforeach

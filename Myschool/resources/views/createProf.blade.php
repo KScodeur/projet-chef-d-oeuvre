@@ -28,6 +28,9 @@
           </div>
           @csrf
         <div class="col-md-12 fw-bold fs-3 mb-3">Enregistrer un Professeur</div>
+          <div class="mb-2">
+            <span>Professeurs</span> /<span>Nouveau</span> /<span><a href="{{route('readProf')}}">Liste des prof</a></span>
+          </div>
           <div class="row mb-3">
             <div class="col">
                 <label for="">Nom</label>
@@ -43,11 +46,21 @@
                 <label for="">Sexe</label>
                 <select name="sexe" id="" class="form-select">
                   <option value="">Selectionner le sexe</option>
-                  <option value="F" name="sexe">Fille</option>
-                  <option value="M" name="sexe">Garçons</option>
+                  <option value="F" name="sexe">Femme</option>
+                  <option value="M" name="sexe">Homme</option>
                 </select>
             </div>
-          </div>
+          
+            <div class="col">
+              <label for="">Matière</label>
+              <select name="nom_matiere" id="" class="form-select">
+                <option>Selectionner la matière</option>
+              @foreach ($matieres as $matiere)
+                <option value="{{$matiere->id}}">{{$matiere->nom_matiere}}</option>
+              @endforeach
+              </select>
+            </div>
+        </div>
           <div class="row mb-3">
               <div class="col">
                 <label for="">date de naissance</label>

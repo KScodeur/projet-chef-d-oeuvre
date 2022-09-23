@@ -31,18 +31,18 @@
 	  
 					  <form class="login100-form validate-form" method="POST" action="{{route('login_user')}}">
 						@csrf
-						@foreach ($errors->all() as $error)
-						{{$error}} 
-						@endforeach
-						<p>Veuillez se connecter a votre compte</p>
 						
+						<p>Veuillez se connecter a votre compte</p>
+						@foreach ($errors->all() as $error)
+						 <div class="text text-danger">{{$error}} </div>
+						@endforeach
 						<div class="form-outline mb-4">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 							<label class="form-label" for="form2Example11">Email</label>
 						  <input type="email" id="form2Example11" class="form-control" name="email"
-							placeholder="adresse email" />
+							placeholder="adresse email" value="{{old('email')}}"/>
 						</div>
-						<div><span class="text-danger">@error('name'){{$message}} @enderror</span></div>
+						<div><span class="text-danger">@error('name'){{$error}} @enderror</span></div>
 	  
 						<div class="form-outline mb-4">
 							<i class="fa fa-lock" aria-hidden="true"></i>

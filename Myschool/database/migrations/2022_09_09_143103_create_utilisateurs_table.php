@@ -19,7 +19,7 @@ class CreateUtilisateursTable extends Migration
             $table->string('prenom');
             $table->string('email')->unique();
             $table->string('nom_utlisateur');
-            $table->password_hash('password');
+            $table->string('password');
             $table->timestamps();
         });
     }

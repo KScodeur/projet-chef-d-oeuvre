@@ -7,12 +7,12 @@
         <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div> --}}
-      <div class="pb-3">
+      <div class="container-fluid pb-3">
         <div>
           @if ($errors->any())
           <ul>
                 @foreach ($errors->all() as $error)
-                    <li class="alert alert-success col-md-12 fw-bold fs-3">{{$error}}</li>
+                    <li class="alert alert-success col-md-12 fw-bold fs-1">{{$error}}</li>
                 @endforeach
             </ul>
           @endif
@@ -29,6 +29,13 @@
           @csrf
           <div class="row">
                     <div type="button" class="col-md-12 fw-bold fs-3 mb-3">Inscription</div>
+                    <div class="mb-2">
+                      <span>Elèves</span>/
+                      <span>Inscription</span>/
+                      <span><a href="{{route('readEleve')}}">Liste totale</a></span>
+                      {{-- <span><a href="{{route('listByClass')}}">Liste par classe</a></span> --}}
+
+                    </div>
                   </div>
           <div class="row mb-3">
             <div class="col">

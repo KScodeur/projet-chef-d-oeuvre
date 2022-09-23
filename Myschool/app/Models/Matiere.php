@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Matiere extends Model
 {
     use HasFactory;
-    protected $fillable=["nom_matiere"];
+    protected $fillable=["nom_matiere","abreviation"];
     public function professeurs()
     {
-        return $this->belongsToMany (Professeur::class,'matiere_professeur');
+        return $this->belongsToMany (Professeur::class);
     }
 }

@@ -2,9 +2,16 @@
 
 @section('content')
    <main class="mt-5 pt-3">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12 fw-bold fs-3 mx-3">Liste total des élèves</div>
+    <div class=" mx-3 ">
+      <div class="container row">
+        <div class="col-md-12 fw-bold fs-3 mb-3">Liste total des élèves</div>
+        <div class="mb-2">
+          <span>Elèves</span>/
+          <span><a href="{{route('createEleve')}}">Inscription</a></span>/
+          <span>Liste totale</span>
+          {{-- <span><a href="{{route('listByClass')}}">Liste par classe</a></span> --}}
+
+        </div>
       </div>
         {{-- début du tableau --}}
         <div class="container row mt-3 ">
@@ -15,8 +22,8 @@
                   <i class="bi bi-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <input type="text"  id="search"/>
-              <table class="table table-striped" id="eleves">
+              {{-- <input type="text"  id="search"/>--}}
+              <table class="table table-striped" id="eleves"> 
                 {{-- table-striped table-hover --}}
                 <thead>
                   <tr >
@@ -63,7 +70,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-info" data-bs-dismiss="modal">Non</button>
-                                <a href="{{url('delete/'.$eleve->id)}}" class="btn btn-danger">Oui</a>
+                                <a href="{{url('deleteMatiere/'.$eleve->id)}}" class="btn btn-danger">Oui</a>
                               </div>
                             </div>
                           </div>

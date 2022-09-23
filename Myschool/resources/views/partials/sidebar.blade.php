@@ -24,35 +24,12 @@
 
              {{-- debut de la partie "élèves" --}}
              <li class="ms-2">
-              <a class="nav-link px-1 active sidebar-link" data-bs-toggle="collapse" href="#collapseExample" 
-              role="button" aria-expanded="false" aria-controls="collapseExample">
+              <a class="nav-link px-1 active sidebar-link" href="{{route('createEleve')}}">
                <span class="me-2"><img src="/images/eleves.png" alt=""></span>
                 <span>Elèves</span>
-                <span class="right-icon ms-auto"><i class="bi bi-chevron-down"></i></span>
+                {{-- <span class="right-icon ms-auto"><i class="bi bi-chevron-down"></i></span> --}}
               </a>
-              <div class="collapse ms-4" id="collapseExample">
-               <ul class="navbar-nav ps-3 me-2">
-                  <li>
-                    <a href="{{route('createEleve')}}" class="nav-link active" >
-                      {{-- <span class="me-2"><i class="bi bi-layout-split"></i></span> --}}
-                      <span>Inscription</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{{route('readEleve')}}" class="nav-link active" >
-                      {{-- <span class="me-2"><i class="bi bi-layout-split"></i></span> --}}
-                      <span>liste total</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{{route('listByClass')}}" class="nav-link active" >
-                      {{-- <span class="me-2"><i class="bi bi-layout-split"></i></span> --}}
-                      <span>Liste par classe</span>
-                    </a>
-                  </li>
-                  </ul>
-              </div>
-            </li> 
+         
              {{-- fin de la partie élèves --}}
 
               <hr class="dropdown-divider" />
@@ -80,34 +57,11 @@
 
             {{-- Professeurs --}}
             <li class="ms-2">
-              <a class="nav-link px-1 active sidebar-link" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+              <a  href="{{route('createProf')}}" class="nav-link px-1 active sidebar-link" >
                <span class="me-2"><img src="/images/eleves.png" alt=""></span>
                 <span>Professeurs</span>
-                <span class="right-icon ms-auto"><i class="bi bi-chevron-down"></i></span>
+                {{-- <span class="right-icon ms-auto"><i class="bi bi-chevron-down"></i></span> --}}
               </a>
-              <div class="collapse ms-4" id="collapseExample2">
-               <ul class="navbar-nav ps-3 ">
-                  <li >
-                    <a href="{{route('createProf')}}" class="nav-link active" >
-                      {{-- <span class="me-2"><i class="bi bi-layout-split"></i></span> --}}
-                      <span>Nouveau</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{{route('readProf')}}" class="nav-link active" >
-                      {{-- <span class="me-2"><i class="bi bi-layout-split"></i></span> --}}
-                      <span>Nom et matière</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="nav-link active" >
-                      {{-- <span class="me-2"><i class="bi bi-layout-split"></i></span> --}}
-                      <span>Liste par classe</span>
-                    </a>
-                  </li>
-                  </ul>
-              </div>
-            </li> 
             {{-- fin  Professeurs --}}
             <hr class="dropdown-divider" />
             </ul>
