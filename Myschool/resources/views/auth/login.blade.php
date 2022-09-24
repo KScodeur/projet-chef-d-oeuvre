@@ -40,9 +40,7 @@
 							<label class="form-label" for="form2Example11">Email</label>
 						  <input type="email" id="form2Example11" class="form-control" name="email"
 							placeholder="adresse email" value="{{old('email')}}"/>
-							@if ($errors)
-								
-							@endif
+							
 						</div>
 						<div><span class="text-danger">@error('name'){{$error}} @enderror</span></div>
 	  
