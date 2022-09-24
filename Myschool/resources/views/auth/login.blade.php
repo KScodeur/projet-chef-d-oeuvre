@@ -40,6 +40,9 @@
 							<label class="form-label" for="form2Example11">Email</label>
 						  <input type="email" id="form2Example11" class="form-control" name="email"
 							placeholder="adresse email" value="{{old('email')}}"/>
+							@if ($errors)
+								
+							@endif
 						</div>
 						<div><span class="text-danger">@error('name'){{$error}} @enderror</span></div>
 	  
@@ -69,7 +72,7 @@
 				  <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
 					<div class="text-white px-3 py-4 p-md-5 mx-md-4">
 					  <h4 class="mb-4">Bienvenue sur l'appli Myschool</h4>
-					  <p class="small mb-0">Myschool est une application de gestion administrative d'ecole</p>
+					  <p class="small mb-0">Myschool est une application de gestion administrative d'ecole </p>
 					</div>
 				  </div>
 				</div>
