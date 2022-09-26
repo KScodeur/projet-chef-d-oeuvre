@@ -24,7 +24,7 @@
 
              {{-- debut de la partie "élèves" --}}
              <li class="ms-2">
-              <a class="nav-link px-1 active sidebar-link" href="{{route('createEleve')}}">
+              <a class="nav-link px-1 active sidebar-link" href="{{route('readEleve')}}">
                <span class="me-2"><img src="/images/eleves.png" alt=""></span>
                 <span>Elèves</span>
                 {{-- <span class="right-icon ms-auto"><i class="bi bi-chevron-down"></i></span> --}}
@@ -57,7 +57,7 @@
 
             {{-- Professeurs --}}
             <li class="ms-2">
-              <a  href="{{route('createProf')}}" class="nav-link px-1 active sidebar-link" >
+              <a  href="{{route('readProf')}}" class="nav-link px-1 active sidebar-link" >
                <span class="me-2"><img src="/images/eleves.png" alt=""></span>
                 <span>Professeurs</span>
                 {{-- <span class="right-icon ms-auto"><i class="bi bi-chevron-down"></i></span> --}}

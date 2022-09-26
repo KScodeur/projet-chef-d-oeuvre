@@ -128,14 +128,14 @@ class EleveController extends Controller{
         $eleves = Eleve::find($id);
         $input = $request->all();
         $eleves->update($input);
-        return redirect('create/list')->with('success', 'mise a jour accompli');  
+        return back()->with('success', 'mise a jour accompli');  
     }
     public function delete($id)
     {
         $data=Eleve::find($id);
         if ($data != null) {
             $data->delete();
-        return redirect('create/list')->with("success","élève supprimer avec succès");
+        return back()->with("success","élève supprimer avec succès");
 
         //     return redirect()->route('dashboard')->with(['message'=> 'Successfully deleted!!']);
         }

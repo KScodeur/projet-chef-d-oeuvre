@@ -64,6 +64,32 @@ public function deleteClasse($id)
     $data->delete();
     return back()->with("success","Classe supprimer avec succès");
 }
+
+public function edit($id)
+{
+    if(Session::has('loginId')){
+        $data=Utilisateur::where('id',Session::get('loginId'))->first();
+        }else{
+            return redirect('/');
+        }
+        $eleves=Eleve::get();
+        $classes=Classe::find($id);
+        return view('editClasse',compact('classes','eleves','data'));
+}
+
+public function update(Request $request, $id)
+{
+    // if(Session::has('loginId')){
+    //     $data=Utilisateur::where('id',Session::get('loginId'))->first();
+    //     }else{
+    //         return redirect('/');
+    //     }
+    
+    $classes = Classe::find($id);
+    $input = $request->all();
+    $classes->update($input);
+    return redirect('classes/scolarite')->with('success', 'mise a jour accompli');  
+}
 }
 
 

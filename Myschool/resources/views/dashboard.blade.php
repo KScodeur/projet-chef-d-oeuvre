@@ -190,7 +190,7 @@
                             <th>Sexe</th>
                             <th>Classe</th>
                             <th>Matricule</th>
-                            <th>Est inscrit</th>
+                            {{-- <th>Est inscrit</th> --}}
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -205,12 +205,30 @@
                               <td>{{$eleve->date_naissance}}</td>
                               <td>{{$eleve->sexe}}</td>
                               <td>{{$eleve->classe->nom_classe}}</td>
-                              <td>{{$eleve->prenom}}</td>
-                              <td>{{$eleve->prenom}}</td>
+                              <td>elv{{$eleve->id}}</td>
+                              {{-- <td>{{$eleve->prenom}}</td> --}}
                               <td>
                                 <a href="{{url('edit/'.$eleve->id)}}" class="btn btn-info">Editer</a>
                                 <a href="#" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#supprimer">Supprimer</a>
                               </td>
+                                            <!-- Modal de supprimer-->
+                                <div class="modal fade" id="supprimer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Supprimer</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <h4>Voulez-vous vraiment faire la suppression?</h4>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-info" data-bs-dismiss="modal">Non</button>
+                                        <a href="{{url('delete/'.$eleve->id)}}" class="btn btn-danger">Oui</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                             </tr>   
                           @endforeach
                         </tbody>

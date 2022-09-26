@@ -73,4 +73,39 @@ class ProfController extends Controller
         // $professeurs->with('matieres')->get();
         return view('profList',compact('data','matieres','professeurs','search'));
     }
+    public function update(Request $request, $id)
+    {
+        // if(Session::has('loginId')){
+        //     $data=Utilisateur::where('id',Session::get('loginId'))->first();
+        //     }else{
+        //         return redirect('/');
+        //     }
+        
+        $professeurs = Professeur::find($id);
+        $input = $request->all();
+        $professeurs->update($input);
+        return back()->with('success', 'mise a jour accompli');  
+    }
+    public function edit($id)
+    {
+        if(Session::has('loginId')){
+            $data=Utilisateur::where('id',Session::get('loginId'))->first();
+            }else{
+                return redirect('/');
+            }
+            $professeurs=Professeur::find($id);
+            return view('editProf',compact('professeurs','data'));
+    }
+    public function delete($id)
+    {
+        $data=Professeur::find($id);
+        if ($data != null) {
+            $data->delete();
+        return back()->with("success","Professeur supprimer avec succès");
+
+        //     return redirect()->route('dashboard')->with(['message'=> 'Successfully deleted!!']);
+        }
+        // $data->delete();
+        // return redirect('create/list')->with("success","élève supprimer avec succès");
+    }
 }

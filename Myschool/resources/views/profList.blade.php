@@ -33,38 +33,37 @@
                 </tr>
             </thead>
             <tbody>
-            {{-- @foreach ($matieres as $matiere)
-                <tr>
-                     <td>{{$loop->index+1}}</td>
-                    <td>{{$matiere->nom_matiere}} </td>
-                
-                    <td>
-                        @foreach ($matiere->professeurs as $professeur)
-                            <span>{{$professeur->nom}}</span>
-                        @endforeach
-      
-                    </td>
-                    <td> 
-                        <a href="" class="btn btn-info">Editer</a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBack">
-                            Supprimer
-                        </button>
-                    </td>
-                </tr>
-            @endforeach --}}
             @foreach ($professeurs as $professeur)
                     <tr>
                         <td>{{$loop->index+1}}</td>
-                        <td>{{$professeur->nom}}</td>
+                        <td>{{$professeur->nom}} {{$professeur->prenom}}</td>
                         <td>{{$professeur->sexe}}</td>
                         <td>{{$professeur->date_naissance}}</td>
                         <td>{{$professeur->grade}}</td>
                         <td>{{$professeur->specialite}}</td>
                         <td> 
-                            <a href="" class="btn btn-info">Editer</a>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBack">
+                            <a href="{{url('editprof/'.$professeur->id)}}" class="btn btn-info">Editer</a>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticsupprimer">
                                 Supprimer
                             </button>
+                            <!-- Modal de supprimer-->
+                            <div class="modal fade" id="staticsupprimer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Supprimer</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Voulez-vous vraiment faire la suppression?</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Non</button>
+                                            <a href="{{url('deleteprof/'.$professeur->id)}}" class="btn btn-danger">Oui</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
             @endforeach
@@ -109,23 +108,6 @@
             </div>
         </div>
     </div>
-     <!-- Modal de supprimer-->
-     <div class="modal fade" id="staticBack" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Supprimer</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <h4>Voulez-vous vraiment faire la suppression?</h4>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-info" data-bs-dismiss="modal">Non</button>
-              <a href="" class="btn btn-danger">Oui</a>
-            </div>
-          </div>
-        </div>
-      </div>
+ 
 </main>
 @endsection

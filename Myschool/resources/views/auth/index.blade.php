@@ -25,16 +25,13 @@
 	  
 					  <div class="text-center">
 						<img src="/images/index.png" alt="" width="300px">
-						<h5 class="mt-1 mb-5 pb-1">L'info securisé</h5>
+						<h5 class="mt-1 mb-5 pb-1">L'info securisée</h5>
 					  </div>
 	  
 					  <form class="login100-form validate-form" method="POST" action="{{route('login_user')}}">
 						@csrf
 						
 						<p>Veuillez se connecter a votre compte</p>
-						@foreach ($errors->all() as $error)
-						 <div class="text text-danger">{{$error}} </div>
-						@endforeach
 						<div class="form-outline mb-4">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 							<label class="form-label" for="form2Example11">Email</label>
@@ -42,14 +39,19 @@
 							placeholder="adresse email" value="{{old('email')}}"/>
 							
 						</div>
-						<div><span class="text-danger">@error('name'){{$error}} @enderror</span></div>
-	  
+						{{-- <div><span class="text-danger">@error('name'){{$error}} @enderror</span></div> --}}
+						@if ($errors->has('email'))
+							<p>{{$errors->first()}}</p>
+						@endif
 						<div class="form-outline mb-4">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 							<label class="form-label" for="form2Example22">Mot de passe</label>
 						  <input type="password" id="form2Example22" class="form-control" name="password"/>
 						</div>
-	  
+						{{-- <div><span class="text-danger">@error('password'){{$error}} @enderror</span></div> --}}
+						@if ($errors->has('password '))
+							<p>{{$errors->first()}}</p>
+						@endif
 						<div class="text-center pt-1 mb-5 pb-1">
 						  <button class="btn btn-primary" type="submit">Log
 							in</button>

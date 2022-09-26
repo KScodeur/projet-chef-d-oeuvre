@@ -34,7 +34,7 @@
                     <th>Classe</th>
                     <th>Date de naissance</th>
                     <th>Matricule</th>  
-                    <th>Est inscrit</th>
+                    {{-- <th>Est inscrit</th> --}}
                     <th>Action</th>
                   </tr>
                 </thead> 
@@ -49,8 +49,8 @@
                       <td>{{$eleve->sexe}}</td>
                       <td>{{$eleve->classe->nom_classe}}</td>
                       <td>{{$eleve->date_naissance}}</td>
-                      <td>{{$eleve->prenom}}</td>
-                      <td>{{$eleve->prenom}}</td>
+                      <td>elv{{$eleve->id}}</td>
+                      {{-- <td>{{$eleve->prenom}}</td> --}}
                       <td>
                         <a href="{{url('edit/'.$eleve->id)}}" class="btn btn-info">Editer</a>
                         {{-- <a href="{{url('delete/'.$eleve->id)}}" class="btn btn-danger">Supprimer</a> --}}

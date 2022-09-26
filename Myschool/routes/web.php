@@ -26,7 +26,7 @@ Route::get('/registration',[AuthController::class,'registration'])->name('authen
 
 Route::get('/register_user',[AuthController::class,'registerUser'])->name('registerUser');
 
-Route::post('/login_user',[AuthController::class,'loginUser'])->name('login_user');
+Route::post('/register_user',[AuthController::class,'loginUser'])->name('login_user');
 
 // pour se déconnecter
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
@@ -70,6 +70,13 @@ Route::get('list/classes',[ClasseController::class,'getByClass'])->name('listByC
 // pour supprimer une classe
 Route::get('deleteClasse/{id}',[ClasseController::class,'deleteClasse'])->name('deleteClasse');
 
+// pour editer une classe
+Route::get('/editclasse/{id}',[ClasseController::class,'edit'])->name('editClasse');
+
+Route::put('update-classe/{id}',[ClasseController::class,'update'])->name('updateClasse');
+
+
+
 // Professeur
 // page d'inscription du prof
 Route::get('prof/create',[ProfController::class,'create'])->name('createProf');
@@ -81,10 +88,22 @@ Route::get('prof/search',[ProfController::class,'search'])->name('prof.search');
 // enregistrer un professeur
 Route::post('prof/create',[ProfController::class,'store'])->name('storeProf');
 
+// pour editer un professeur
+Route::get('/editprof/{id}',[ProfController::class,'edit'])->name('editProf');
+//pour mettre a jour
+Route::put('update-prof/{id}',[ProfController::class,'update'])->name('updateProf');
+//pour supprimer un prof
+Route::get('deleteprof/{id}',[ProfController::class,'delete'])->name('deleteProf');
+
+
 // matière
 Route::get('/matieres',[MatiereController::class,'read'])->name('matieres');
 // enregistrer une matière
 Route::post('matiere/create',[MatiereController::class,'store'])->name('storeMatiere');
+// pour editer une matiere
+Route::get('/editmatiere/{id}',[ProfController::class,'edit'])->name('editMatiere');
+//pour mettre a jour
+Route::put('update-matiere/{id}',[ProfController::class,'update'])->name('updateMatiere');
 // pour supprimer une matiere
 Route::get('deleteMatiere/{id}',[MatiereController::class,'delete'])->name('deleteMatiere');
 
