@@ -58,7 +58,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <div>
+                  {{-- <div>
                     @if ($errors->any())
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -66,7 +66,7 @@
                           @endforeach
                     </ul>
                     @endif
-                  </div>
+                  </div> --}}
                   <div class="row">
                   @if(session()->has("success"))
                           <div class="alert alert-success">
@@ -110,47 +110,47 @@
                 <div class="row mb-3">
                     <div class="col">
                       <label for="">date de naissance</label>
-                      <input type="date" class="form-control" placeholder="mettre la date de naissance" name="date_naissance">
+                      <input type="date" class="form-control" placeholder="mettre la date de naissance" name="date_naissance" required>
                     </div>
                     <div class="col">
                       <label for="">Lieu de naissance</label>
-                      <input type="text" class="form-control" placeholder="mettre la date de naissance" name="lieu_naissance">
+                      <input type="text" class="form-control" placeholder="mettre la date de naissance" name="lieu_naissance" required>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col">
                         <label for="">Nationalité</label>
-                        <input type="text" class="form-control" name="nationalite">
+                        <input type="text" class="form-control" name="nationalite" required>
                     </div>
                     <div class="col">
                         <label for="">Nom du père</label>
-                        <input type="text" class="form-control" name="nom_pere">
+                        <input type="text" class="form-control" name="nom_pere" required>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
                         <label for="">Profession du père</label>
-                        <input type="text" class="form-control" name="pere_profession">
+                        <input type="text" class="form-control" name="pere_profession" required>
                     </div>
                     <div class="col">
                         <label for="">Numero du père</label>
-                        <input type="text" class="form-control" name="tel">
+                        <input type="tel" class="form-control" name="tel" required>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
                         <label for="">Nom de la mère</label>
-                        <input type="text" class="form-control" name="nom_mere">
+                        <input type="text" class="form-control" name="nom_mere" required>
                     </div>
                     <div class="col">
                         <label for="">Profession de la mère</label>
-                        <input type="text" class="form-control" name="mere_profession">
+                        <input type="text" class="form-control" name="mere_profession" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <label for="" >Email</label>
-                        <input type="text" class="form-control" name="email">
+                        <input type="text" class="form-control" name="email" required>
                     </div>  
                 </div>
                   </div>
@@ -164,7 +164,7 @@
             </div>
           </div>
                   {{-- inscription modal --}}
-                  <div class="col-md-12 fw-bold fs-3 mx-3"><span>Le top des dix(10) dernier élèves inscites</span>
+                  <div class="col-md-12 fw-bold fs-3 mx-3"><span>Le top des dix(10) derniers élèves inscites</span>
                     
                   </div>
                   <button type="button" class="btn btn-primary m-3 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">

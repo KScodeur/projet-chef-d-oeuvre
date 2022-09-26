@@ -8,7 +8,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div> --}}
       <div class="pb-3">
-        <div>
+        {{-- <div>
           @if ($errors->any())
           <ul>
                 @foreach ($errors->all() as $error)
@@ -16,7 +16,7 @@
                 @endforeach
             </ul>
           @endif
-        </div>
+        </div> --}}
         <form  method="POST" action="{{route('storeProf')}}" class="container-fluid">
           <div class="row">
               @if(session()->has("success"))
@@ -34,17 +34,17 @@
           <div class="row mb-3">
             <div class="col">
                 <label for="">Nom</label>
-                <input type="text" class="form-control" placeholder="veiller entrer le nom" name="nom">
+                <input type="text" class="form-control" placeholder="veiller entrer le nom" name="nom" required>
             </div>
             <div class="col">
                 <label for="">Prénom</label>
-                <input type="text" class="form-control" placeholder="mettre la description" name="prenom">
+                <input type="text" class="form-control" placeholder="mettre la description" name="prenom" required>
             </div>
           </div>
           <div class="row mb-3">
             <div class="col">
                 <label for="">Sexe</label>
-                <select name="sexe" id="" class="form-select">
+                <select name="sexe" id="" class="form-select" required>
                   <option value="">Selectionner le sexe</option>
                   <option value="F" name="sexe">Femme</option>
                   <option value="M" name="sexe">Homme</option>
@@ -53,7 +53,7 @@
           
             <div class="col">
               <label for="">Matière</label>
-              <select name="nom_matiere" id="" class="form-select">
+              <select name="nom_matiere" id="" class="form-select" required>
                 <option>Selectionner la matière</option>
               @foreach ($matieres as $matiere)
                 <option value="{{$matiere->id}}">{{$matiere->nom_matiere}}</option>
@@ -64,37 +64,37 @@
           <div class="row mb-3">
               <div class="col">
                 <label for="">date de naissance</label>
-                <input type="date" class="form-control" placeholder="mettre la date de naissance" name="date_naissance">
+                <input type="date" class="form-control" placeholder="mettre la date de naissance" name="date_naissance" required>
               </div>
               <div class="col">
                 <label for="">Lieu de naissance</label>
-                <input type="text" class="form-control" placeholder="mettre la date de naissance" name="lieu_naissance">
+                <input type="text" class="form-control" placeholder="mettre la date de naissance" name="lieu_naissance" required>
               </div>
           </div>
           <div class="row mb-3">
             <div class="col">
                 <label for="">Nationalité</label>
-                <input type="text" class="form-control" name="nationalite">
+                <input type="text" class="form-control" name="nationalite" required>
             </div>
             <div class="col">
                 <label for="">Numero</label>
-                <input type="text" class="form-control" name="">
+                <input type="text" class="form-control" name="" required>
             </div>
           </div>
           <div class="row mb-3">
             <div class="col">
                 <label for="">Grade</label>
-                <input type="text" class="form-control" name="grade">
+                <input type="text" class="form-control" name="grade" required>
             </div>
             <div class="col">
                 <label for="">specialite</label>
-                <input type="text" class="form-control" name="specialite">
+                <input type="text" class="form-control" name="specialite" required>
             </div>
           </div>
           <div class="row">
             <div class="col">
                 <label for="" >Email</label>
-                <input type="text" class="form-control" name="email">
+                <input type="text" class="form-control" name="email" required>
             </div>  
           </div>
           </div>

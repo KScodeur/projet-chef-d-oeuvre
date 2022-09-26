@@ -83,7 +83,6 @@ class EleveController extends Controller{
             $eleves=Eleve::where('nom','LIKE','%'.$search.'%')
                             ->orWhere('prenom','LIKE','%'.$search.'%')
                             ->orWhere('sexe','LIKE','%'.$search.'%')
-                            ->orWhere('nom_classe','LIKE','%'.$search.'%')
                             ->get(); 
             $classes=Classe::get();
             

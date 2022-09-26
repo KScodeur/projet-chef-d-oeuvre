@@ -35,20 +35,20 @@
 						<div class="form-outline mb-4">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 							<label class="form-label" for="form2Example11">Email</label>
-						  <input type="email" id="form2Example11" class="form-control" name="email"
+						  <input type="email" id="form2Example11" class="form-control  @error('title') is-invalid @enderror" name="email" required
 							placeholder="adresse email" value="{{old('email')}}"/>
 							
 						</div>
-						{{-- <div><span class="text-danger">@error('name'){{$error}} @enderror</span></div> --}}
+						<div><span class="text-danger">@error('email'){{$message}} @enderror</span></div>
 						@if ($errors->has('email'))
 							<p>{{$errors->first()}}</p>
 						@endif
 						<div class="form-outline mb-4">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 							<label class="form-label" for="form2Example22">Mot de passe</label>
-						  <input type="password" id="form2Example22" class="form-control" name="password"/>
+						  <input type="password" id="form2Example22" class="form-control  @error('title') is-invalid @enderror" name="password"  required />
 						</div>
-						{{-- <div><span class="text-danger">@error('password'){{$error}} @enderror</span></div> --}}
+						<div><span class="text-danger">@error('password'){{$message}} @enderror</span></div>
 						@if ($errors->has('password '))
 							<p>{{$errors->first()}}</p>
 						@endif

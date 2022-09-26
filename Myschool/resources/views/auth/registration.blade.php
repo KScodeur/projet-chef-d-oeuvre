@@ -33,44 +33,45 @@
 						
 						<p>Veuillez vous inscrire</p>
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example11">Nom</label>
-                              <input type="text" id="form2Example11" class="form-control" name="nom"
-                                placeholder="" />	
+                                <label class="form-label" for="">Nom</label>
+                              <input type="text"  class="form-control" name="nom"
+                                placeholder="" value="{{old('nom')}}"required/>	
                             </div>
 						<div><span class="text-danger">@error('nom'){{$error}} @enderror</span></div>
 	  
 						<div class="form-outline mb-4">
-							<label class="form-label" for="form2Example22">Prénom</label>
-						  <input type="text" id="form2Example22" class="form-control" name="prenom"/>
+							<label class="form-label" >Prénom</label>
+						  <input type="text"  class="form-control" name="prenom" value="{{old('prenom')}}" required/>
 						</div>
 						
                             <span class="text-danger">@error('prenom'){{$error}} @enderror</span>
                         
                         <div class="form-outline mb-4">
-							<label class="form-label" for="form2Example22">Email</label>
-						  <input type="email" id="form2Example22" class="form-control" name="email"/>
+							<label class="form-label" >Email</label>
+						  <input type="email"  class="form-control" name="email" value="{{old('email')}}" required/>
 						</div>
 						<div>
                             <span class="text-danger">@error('email'){{$error}} @enderror</span>
                         </div>
                         <div class="form-outline mb-4">
-							<label class="form-label" for="form2Example22">Nom utilisateur</label>
-						  <input type="text" id="form2Example22" class="form-control" name="nom_utilisateur"/>
+							<label class="form-label" >Nom utilisateur</label>
+						  <input type="text" class="form-control" name="nom_utilisateur" value="{{old('nom_utilisateur')}}" required/>
 						</div>
 						<div>
                             <span class="text-danger">@error('nom_utilisateur'){{$error}} @enderror</span>
                         </div>
                         <div class="form-outline mb-4">
-							<label class="form-label" for="form2Example22">Mot de passe</label>
-						  <input type="password" id="form2Example22" class="form-control" name="password"/>
+							<label class="form-label" >Mot de passe</label>
+						  <input type="password"  class="form-control @error('title') is-invalid @enderror" name="password" required/>
 						</div>
-						<div><span class="text-danger">@error('prenom'){{$error}} @enderror</span></div>
+						<span class="text-danger">@error('password'){{$message}} @enderror</span>
 	  
 						<div class="text-center pt-1 mb-5 pb-1">
 						  <button class="btn btn-primary" type="submit">Save</button>
 						  {{-- <a class="text-muted" href="#!">Forgot password?</a> --}}
 						</div>
-                        <a href="{{route('login')}}">se connecter? c'est ici</a>
+                        <a href="{{route('login')}}">se connecter? </a>c'est ici
+						<a href="/eleve" class="ms-3">Retour</a>
 						<div class="d-none">
 							<div class="d-flex align-items-center justify-content-center pb-4">
 								<p class="mb-0 me-2">Don't have an account?</p>
